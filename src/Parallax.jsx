@@ -8,7 +8,7 @@ import hill4 from './assets/hill4.png';
 import hill5 from './assets/hill5.png';
 import leaf from  './assets/leaf.png';
 import plant from './assets/plant.png';
-import FadeIn from './Fadein';
+
 
 const Parallax = () => {
   const [{ scrollY }, api] = useSpring(() => ({ scrollY: 0 }));
