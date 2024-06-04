@@ -8,6 +8,7 @@ import hill4 from './assets/hill4.png';
 import hill5 from './assets/hill5.png';
 import leaf from  './assets/leaf.png';
 import plant from './assets/plant.png';
+import FadeIn from './Fadein';
 
 const Parallax = () => {
   const [{ scrollY }, api] = useSpring(() => ({ scrollY: 0 }));
@@ -39,6 +40,7 @@ const Parallax = () => {
           className="top-0 left-0 w-full absolute pointer-events-none" 
         />
         
+       
         <animated.h2 
           style={{
             transform: scrollY.to(y => `translateY(${y * 0.5}px)`)
@@ -47,6 +49,7 @@ const Parallax = () => {
         >
           Welcome to my website!💕
         </animated.h2>
+      
         
         <img 
           src={hill3}

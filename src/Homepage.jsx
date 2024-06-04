@@ -6,8 +6,27 @@ import Header from './header';
 import Footer from './footer';
 import Parallax from './Parallax';
 import pig from './assets/pig.png';
+
 import './index.css';
 
+const MainContent = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  return (
+    <main className="containe flex-auto p-20">
+      <div className="flex-grow mx-auto py-8 flex-auto"></div>
+      {/* 侧边栏图标 */}
+      <div onClick={toggleSidebar}>
+        <FloatButton tooltip={<div>Data Visualization</div>} style={{bottom:500}} icon={<div><img src={pig} alt="svg" /></div>} />
+      </div>
+      {/* 侧边栏 */}
+      <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
+    </main>
+  );
+};
 
 const Sidebar = ({ isOpen }) => {
   // 使用 react-spring 的 useSpring 钩子来定义侧边栏动画
@@ -32,55 +51,19 @@ const Sidebar = ({ isOpen }) => {
   );
 };
 
-
-const MainContent = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  return (
-    <main className="containe flex-auto p-20">
-      
-      <div className="flex-grow mx-auto py-8 flex-auto">
-        
-
-
-</div>
-
-
-
-     
-      {/* 侧边栏图标 */}
-      <div
-        onClick={toggleSidebar}
-        >
-       
-        
-       <FloatButton  tooltip={<div>Data Visualization</div>}  style={{bottom:500}} icon={<div><img src={pig} alt="svg" /></div>}/>
-      </div>
-      {/* 侧边栏 */}
-      <Sidebar isOpen={isSidebarOpen} onClose={toggleSidebar} />
-    </main>
-  );
-};
-
 const Home = () => (
-  
+
     <div className="flex flex-col min-h-screen">
-     
-     <Header/>
-     <Parallax/>
-     <div className='flex align-middle justify-center '>
-     <G2Chart/>
-     </div>
+      <Header />
+      <Parallax />
+      <div className='flex align-middle justify-center '>
+        <G2Chart />
+      </div>
       <div className="p-60 flex-grow flex flex-col items-center justify-center bg-gray-100 ">
-            
         <MainContent />
       </div> 
       <Footer />
     </div>
-
   
 );
 
