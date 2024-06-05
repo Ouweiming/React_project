@@ -11,6 +11,15 @@ import Header from './header';
 import Footer from './footer';
 import Parallax from './Parallax';
 import pig from './assets/pig.png';
+import firework1 from './assets/咩1.png'
+import firework2 from './assets/咩2.png'
+import firework3 from './assets/咩3.png'
+import firework4 from './assets/咩4.png'
+import firework5 from './assets/咩5.png'
+import firework6 from './assets/咩6.png'
+import firework7 from './assets/咩7.png'
+import firework8 from './assets/咩8.png'
+import firework9 from './assets/咩9.png'
 
 const Homepage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -102,15 +111,15 @@ const Homepage = () => {
 
   const PhotoWall = () => {
     const photos = [
-      "src/assets/咩1.JPG",
-      "src/assets/咩2.JPG",
-      "src/assets/咩3.JPG",
-      "src/assets/咩4.JPG",
-      "src/assets/咩5.JPG",
-      "src/assets/咩6.jpg",
-      "src/assets/咩7.JPG",
-      "src/assets/咩8.JPG",
-      "src/assets/咩9.JPG",
+      firework1,
+      firework2,
+      firework3,
+      firework4,
+      firework5,
+      firework6,
+      firework7,
+      firework8,
+      firework9,
       
       // 添加更多照片链接
     ];
