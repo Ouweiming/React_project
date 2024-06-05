@@ -118,7 +118,7 @@ const Homepage = () => {
     return (
       <>
       <div className="flex justify-center items-center text-lg font-bold text-cyan-600">
-           <p>滚动动画写得有点烂，先给大家看个烟花🎆~</p>
+           <p>滚动动画写得有点烂，先放个烟花🎆~</p>
       </div>
 
       <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 p-8 gap-4">
