@@ -11,7 +11,7 @@ export default function G2Chart() {
     fetch('/blood_filtered.json') 
       .then((response) => response.json())
       .then((data) => {
-        const sampledData = sampleData(data,1000); // 对数据进行采样，数据太多卡到飞起 ：（
+        const sampledData = sampleData(data,1500); // 对数据进行采样，数据太多卡到飞起 ：（
         setData(sampledData);
       });
 
@@ -41,7 +41,7 @@ export default function G2Chart() {
   function renderChart(container, data) {
     const chart = new Chart({
       container,
-      height: 480,
+      height: 520,
       width: 1500,
     });
 

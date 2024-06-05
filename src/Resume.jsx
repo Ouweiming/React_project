@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import EChartsReact from 'echarts-for-react';
+import { motion } from "framer-motion";
 import profilePhoto from './assets/mouse.jpg';
 import Header from './header';
 import 'highlight.js/styles/github.css'; // 导入高亮样式
@@ -45,7 +46,7 @@ const Resume = () => {
       text: '“五边形战神😎”',
       textStyle: {
         fontSize: 18,
-        color: 'darkblue',
+        color: 'skyblue',
         fontWeight: 'bold',
       },
       left: '20%',
@@ -104,6 +105,12 @@ const Resume = () => {
 
   return (
     <>
+    <motion.div
+    initial={{ x: 300, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    exit={{ x: -300, opacity: 0 }}
+     transition={{ease: "easeOut",duration:1.6}}
+    >
     <Header/>
     <div className="container mx-auto p-4">
       <header className="flex items-center mb-8">
@@ -123,6 +130,7 @@ const Resume = () => {
       </section>
     </div>
     <Footer/>
+    </motion.div>
     </>
   );
 };

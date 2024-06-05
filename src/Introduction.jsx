@@ -2,6 +2,7 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
 import profilePhoto from './assets/pig.png';
+import { motion } from 'framer-motion';
 import Header from './header';
 import 'highlight.js/styles/github.css'; // 导入高亮样式
 import Footer from './footer';
@@ -48,6 +49,12 @@ const Introduction =() =>{
 
     return (
     <>
+    <motion.div
+    initial={{ x: -300, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    exit={{ x: -300, opacity: 0 }}
+     transition={{ease: "easeOut",duration:1.6}}
+    >
     <Header/>
     <div className="container mx-auto p-4">
       <header className="flex items-center mb-8">
@@ -62,6 +69,7 @@ const Introduction =() =>{
       </section>
     </div>
     <Footer/>
+    </motion.div>
     </>
   );
 };
