@@ -19,7 +19,6 @@ const Footer = () => {
           <div className="w-full md:w-1/3 mt-8 md:mt-0">
             <h2 className="text-2xl font-bold mb-4">导航</h2>
             <ul>
-              <li className="my-1"><a href="#about" className="hover:underline  hover:text-cyan-300">关于我</a></li>
               <li className="my-1"><a href="#projects" className="hover:underline  hover:text-cyan-300">项目</a></li>
               <li className="my-1"><a href="#blog" className="hover:underline  hover:text-cyan-300">博客</a></li>
               <li className="my-1"><a href="#contact" className="hover:underline  hover:text-cyan-300">联系</a></li>

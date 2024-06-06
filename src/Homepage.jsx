@@ -25,7 +25,7 @@ const Homepage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // 我以为可以提前加载可视化图表，然而并没有啥用：）
+    // 以为可以悄悄加载页面，然而并没有啥用：）
     const loadData = async () => {
       await new Promise(resolve => setTimeout(resolve, 2000)); // 模拟5秒的加载时间
       setIsLoading(false);
@@ -35,8 +35,7 @@ const Homepage = () => {
   }, []);
 
   const markdown = `
---- 
-## 好简陋的页面：）滚动视差是模仿别人滴；暂时还没做暗黑模式，摸下🐷头哈哈哈哈
+## 页面有点简陋：）滚动视差是模仿别人滴；很多功能尚未完善，摸下\ud83d\udc37头哈哈哈哈
 ---
 ### Data Visualization:
 `;
@@ -127,7 +126,7 @@ const Homepage = () => {
     return (
       <>
       <div className="flex justify-center items-center text-lg font-bold text-cyan-600">
-           <p>滚动动画写得有点烂，先放个烟花🎆~</p>
+           <p>滚动动画写得有点烂，就不展示了，给uu们放个烟花~</p>
       </div>
 
       <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 p-8 gap-4">
@@ -160,13 +159,14 @@ const Homepage = () => {
           <Header /> 
           <Parallax />
           <MainContent />
-          <section className="mb-8 prose">
+          <section className="mb-8 container ml-3.5 p-6 prose">
             <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{markdown}</ReactMarkdown>
           </section>
+
           <div className='flex align-middle justify-center top-10 bg-transparent'>
             <G2Chart />
           </div>
-          <section className="mb-8 prose">
+          <section className="mb-8 container mx-auto p-4 prose">
             <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{markdown_}</ReactMarkdown>
           </section>
           <PhotoWall/>

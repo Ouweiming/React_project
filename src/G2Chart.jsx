@@ -42,7 +42,7 @@ export default function G2Chart() {
     const chart = new Chart({
       container,
       height: 520,
-      width: 1500,
+      width: 1300,
     });
 
     chart
