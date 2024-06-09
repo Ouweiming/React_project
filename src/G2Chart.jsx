@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Chart } from '@antv/g2';
 import './index.css';
-
 export default function G2Chart() {
   const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
@@ -11,7 +10,7 @@ export default function G2Chart() {
     fetch('/blood_filtered.json') 
       .then((response) => response.json())
       .then((data) => {
-        const sampledData = sampleData(data,1500); // 对数据进行采样，数据太多卡到飞起 ：（
+        const sampledData = sampleData(data,1000); // 对数据进行采样，数据太多卡到飞起 ：（
         setData(sampledData);
       });
 
@@ -64,8 +63,10 @@ export default function G2Chart() {
         titleFillOpacity:50,
         titleStroke:' #880808',
         label:true,
-        labelFill:"#666666",
-        tickStroke:"#666666",
+        labelFill:"black",
+        tickStroke:"black",
+        line:true,
+        
        
         
         labelFormatter: (d) => `${Math.abs(+d)}`,
@@ -74,12 +75,12 @@ export default function G2Chart() {
       .axis('x', { 
         title: 'Age ->' ,
         titleFontSize:20,
-        titleFill:'white',
-        titleFillOpacity:50,
-        titleStroke:'#0099CC',
+        titleFill:'black',
+        titleStroke:'white',
         label:true,
-        labelFill:"#666666",
-        tickStroke:"#666666",
+        labelFill:"black",
+        tickStroke:"black",
+        line:true,
 
     
       })
@@ -93,9 +94,10 @@ export default function G2Chart() {
       
 
     chart.lineY().data([0]).style('stroke', 'black'); // 添加基准线
-    chart.title('Hemoglobin content',{titleFontSize:18,
-      titleFill:'pink',
-      titleFillOpacity:50,
+    chart.title('Hemoglobin content',
+      {
+      titleFontSize:18,
+      titleFill:'#666666',
       });
     
     chart.render();

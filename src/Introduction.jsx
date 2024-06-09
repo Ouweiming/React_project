@@ -4,15 +4,13 @@ import rehypeHighlight from 'rehype-highlight';
 import profilePhoto from './assets/pig.png';
 import { motion } from 'framer-motion';
 import Header from './header';
-import 'highlight.js/styles/github.css'; // 导入高亮样式
 import Footer from './footer';
-import './index.css';
+import { FloatButton } from 'antd';
+import { useTheme } from './theme-provider'; 
 
 const markdown = `
-
 ---
-
-Hello！我是咩，一只小程序猿&#x1F412;
+Hello！我是咩，一只小程序猿🐒;
 
 ### 业余爱好
 - **电影**：炒鸡爱看恐怖片 and 丧尸片，阅片无数：）
@@ -32,7 +30,7 @@ Hello！我是咩，一只小程序猿&#x1F412;
 
 ### 前端开发技能
 - **React**：我知道它的存在！
-- **Vue**：我听说它很流行！还有很多糖吃&#x1F60B;
+- **Vue**：我听说它很流行！还有很多糖吃🤫;
 - **Angular**：好像是个框架吧?
 
 ### 未来计划
@@ -42,34 +40,34 @@ Hello！我是咩，一只小程序猿&#x1F412;
 如果你对我感兴趣，想要了解更多关于我的奇葩故事，欢迎随时联系我！但请确保你的设备已经备份，因为谁知道会发生什么呢？：）
 
 ---
-
 `;
 
-const Introduction =() =>{
+const Introduction = () => {
+  const { theme } = useTheme(); // 获取当前主题状态
 
-    return (
+  return (
     <>
-    <motion.div
-    initial={{ x: -300, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    exit={{ x: -300, opacity: 0 }}
-     transition={{ease: "easeOut",duration:1.6}}
-    >
-    <Header/>
-    <div className="container mx-auto p-4">
-      <header className="flex items-center mb-8">
-        <img src={profilePhoto} alt="Profile" className="w-32 h-32 rounded-full mr-4 border-2 border-gray-300" />
-        <div>
-          <h1 className="text-4xl font-bold">咩</h1>
+      <FloatButton.BackTop/>
+      <motion.div
+        initial={{ x: -300, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -300, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 1.6 }}
+      >
+        <Header />
+        <div className={`container mx-auto p-4 ${theme === 'dark' ? 'dark' : ''}`}>
+          <header className="flex items-center mb-8">
+            <img src={profilePhoto} alt="Profile" className="w-32 h-32 rounded-full mr-4 border-2 border-gray-300" />
+            <div>
+              <h1 className="text-4xl font-bold">咩</h1>
+            </div>
+          </header>
+          <section className={`mb-8 prose ${theme === 'dark' ? 'prose-dark' : ''}`}>
+            <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{markdown}</ReactMarkdown>
+          </section>
         </div>
-      
-      </header>
-      <section className="mb-8 prose">
-        <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{markdown}</ReactMarkdown>
-      </section>
-    </div>
-    <Footer/>
-    </motion.div>
+        <Footer />
+      </motion.div>
     </>
   );
 };

@@ -5,8 +5,10 @@ import EChartsReact from 'echarts-for-react';
 import { motion } from "framer-motion";
 import profilePhoto from './assets/mouse.jpg';
 import Header from './header';
-import 'highlight.js/styles/github.css'; // 导入高亮样式
 import Footer from './footer';
+import { FloatButton } from 'antd';
+import { useTheme } from './theme-provider'; // 假设你的主题提供程序提供了 useTheme 钩子
+import 'highlight.js/styles/github.css'; // 导入高亮样式
 import './index.css';
 
 const markdown = `
@@ -38,18 +40,21 @@ const skills = [
   { name: 'Java', level: 10 },
   { name: 'R', level: 10 },
   { name: 'Python', level: 10 },
+  { name: 'Go', level: 10 },
 ];
 
 const Resume = () => {
+  const { theme } = useTheme(); // 获取当前主题状态
+
   const getSkillsOption = () => ({
     title: {
-      text: '“五边形战神😎”',
+      text: '“六边形战神\ud83d\ude48”',
       textStyle: {
         fontSize: 18,
-        color: 'skyblue',
+        color: '#0080ff',
         fontWeight: 'bold',
       },
-      left: '20%',
+      left: 'center',
     },
     tooltip: {
       trigger: 'item',
@@ -59,29 +64,31 @@ const Resume = () => {
       top: 'bottom',
       textStyle: {
         fontSize: 14,
-        color: '#666',
+        color: theme === 'dark' ? '#ccc' : '#666',
       },
     },
     radar: {
       indicator: skills.map(skill => ({ name: skill.name, max: 100 })),
-      axisName: {
-        color: '#666',
-        fontSize: 14,
-        fontWeight: 'bold',
+      radius: '65%',
+      center: ['50%', '50%'],
+      axisName: { // 将 name 改为 axisName
+        textStyle: {
+          color: theme === 'dark' ? '#ccc' : '#666',
+        },
       },
       splitLine: {
         lineStyle: {
-          color: 'rgba(0, 0, 0, 0.5)',
+          color: theme === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
         },
       },
       splitArea: {
         areaStyle: {
-          color: ['rgba(255, 255, 255, 0.1)', 'rgba(0, 0, 0, 0.1)'],
+          color: theme === 'dark' ? ['rgba(0, 0, 0, 0.1)', 'rgba(0, 0, 0, 0.1)'] : ['rgba(255, 255, 255, 0.1)', 'rgba(255, 255, 255, 0.1)'],
         },
       },
       axisLine: {
         lineStyle: {
-          color: 'rgba(0, 0, 0, 0.8)',
+          color: theme === 'dark' ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.8)',
         },
       },
     },
@@ -102,35 +109,38 @@ const Resume = () => {
       }]
     }]
   });
+  
 
   return (
     <>
-    <motion.div
-    initial={{ x: 300, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    exit={{ x: -300, opacity: 0 }}
-     transition={{ease: "easeOut",duration:1.6}}
-    >
-    <Header/>
-    <div className="container mx-auto p-4">
-      <header className="flex items-center mb-8">
-        <img src={profilePhoto} alt="Profile" className="w-32 h-32 rounded-full mr-4 border-2 border-gray-300" />
-        <div>
-          <h1 className="text-4xl font-bold">咩</h1>
-          <br/>
-          <p className="text-xl text-gray-600">
-        求职意向: 全栈工程师 （前端🥬🐦&&后端还没怎么学🐢）</p>
+    <FloatButton.BackTop/>
+      <motion.div
+        initial={{ x: 300, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: -300, opacity: 0 }}
+        transition={{ ease: "easeOut", duration: 1.6 }}
+      >
+        <Header />
+        <div className={`container mx-auto p-4 ${theme === 'dark' ? 'dark' : ''}`}>
+          <header className="flex items-center mb-8">
+            <img src={profilePhoto} alt="Profile" className="w-32 h-32 rounded-full mr-4 border-2 border-gray-300" />
+            <div>
+              <h1 className="text-4xl font-bold">咩</h1>
+              <br />
+              <p className={`text-xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
+              求职意向: 全栈工程师 （前端🥬🐦&&后端还没怎么学🐢）
+              </p>
+            </div>
+          </header>
+          <section className={`mb-8 prose ${theme === 'dark' ? 'prose-dark' : ''}`}>
+            <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{markdown}</ReactMarkdown>
+          </section>
+          <section>
+            <EChartsReact option={getSkillsOption()} style={{ height: '400px', width: '100%' }} />
+          </section>
         </div>
-      </header>
-      <section className="mb-8 prose">
-        <ReactMarkdown rehypePlugins={[rehypeHighlight]}>{markdown}</ReactMarkdown>
-      </section>
-      <section>
-        <EChartsReact option={getSkillsOption()} style={{ height: '400px', width: '100%' }} />
-      </section>
-    </div>
-    <Footer/>
-    </motion.div>
+        <Footer />
+      </motion.div>
     </>
   );
 };

@@ -23,7 +23,7 @@ export default function Loading() {
           borderRadius: ["0%", "0%", "50%", "50%", "0%"]
         }}
         transition={{
-          duration: 1,
+          duration: 2,
           ease: "easeInOut",
           times: [0, 0.2, 0.5, 0.8, 1],
           repeat: Infinity,

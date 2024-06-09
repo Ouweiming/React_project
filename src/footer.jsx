@@ -45,15 +45,10 @@ const Footer = () => {
             </form>
           </div>
         </div>
-        <div className="mt-8 border-t border-gray-700 pt-4 text-center">
+        <div className="mt-16 border-t  border-gray-700 pt-14 text-center">
           <p>© 2024 咩🐑. All Rights Reserved.</p>
           <p className="text-large">Made with ☕ and 💖</p>
-          <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="mt-4 bg-gray-700 hover:bg-gray-800  hover:text-cyan-300 text-white font-bold py-2 px-4 rounded-md"
-          >
-            Back to top
-          </button>
+          
         </div>
       </div>
     </footer>
