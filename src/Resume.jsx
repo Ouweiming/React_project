@@ -128,7 +128,7 @@ const Resume = () => {
               <h1 className="text-4xl font-bold">咩</h1>
               <br />
               <p className={`text-xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>
-              求职意向: 全栈工程师 （前端🥬🐦&&后端还没怎么学🐢）
+              求职意向: 全栈工程师 （前端🥬🐶&&后端还没怎么学🐢）
               </p>
             </div>
           </header>
